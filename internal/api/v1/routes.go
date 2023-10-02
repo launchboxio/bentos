@@ -6,7 +6,8 @@ import (
 )
 
 func AddRoutes(router *gin.RouterGroup) {
-	router.GET("/health", health)
+	instanceGroup := router.Group("/instance")
+	instanceGroup.GET("/health", health)
 }
 
 func health(c *gin.Context) {

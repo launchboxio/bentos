@@ -1,15 +1,19 @@
 package api
 
 import (
-	"github.com/gin-gonic/gin"
-	v1routes "github.com/launchboxio/bentos/internal/api/v1"
+  "github.com/gin-gonic/gin"
+  instancev1 "github.com/launchboxio/bentos/internal/api/instance/v1"
+  v1routes "github.com/launchboxio/bentos/internal/api/v1"
 )
 
 func New() (*gin.Engine, error) {
-	r := gin.Default()
+  r := gin.Default()
 
-	router := r.Group("/api/v1")
-	v1routes.AddRoutes(router)
+  apiRouter := r.Group("/api")
+  instancev1.AddRoutes(apiRouter)
 
-	return r, nil
+  v1Router := apiRouter.Group("/v1")
+  v1routes.AddRoutes(v1Router)
+
+  return r, nil
 }

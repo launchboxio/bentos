@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"github.com/launchboxio/bentos/internal/agent"
 	"github.com/spf13/cobra"
 )
 
@@ -9,7 +9,7 @@ var agentCmd = &cobra.Command{
 	Use:   "agent",
 	Short: "Start a BentOS agent",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Starting the BentOS agent")
+		agent.Run()
 	},
 }
 
