@@ -1,0 +1,4 @@
+server: air -c config/dev/server.toml
+agent: air -c config/dev/agent.toml
+
+

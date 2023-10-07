@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if ! command -v foreman &> /dev/null; then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+if [ ! -f air ]; then
+  go install github.com/cosmtrek/air@latest
+fi
+
+# Finally, we can start the application
+exec foreman start -f Procfile.dev "$@"
